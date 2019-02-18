@@ -1,0 +1,31 @@
+{
+  "name": "concrete5/concrete5-api-client",
+  "description": "A PHP client for the concrete5 REST API.",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Andrew Embler",
+      "email": "andrew@concrete5.org",
+      "homepage": "http://andrewembler.com"
+    }
+  ],
+  "require": {
+    "concrete5/oauth2-concrete5": "@dev",
+    "guzzlehttp/guzzle": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Concrete\\Api\\Client\\": "src/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../oauth2_concrete5",
+      "options": {
+        "symlink": true
+      }
+    }
+  ]
+
+}
