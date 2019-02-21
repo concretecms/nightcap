@@ -4,6 +4,7 @@ namespace Concrete\Api\Client;
 use Concrete\Api\Client\OAuth2\Exception\InvalidStateException;
 use Concrete\Api\Client\Provider\ProviderInterface;
 use Concrete\Api\Client\Service\ServiceCollection;
+use Concrete\Api\Client\Service\ServiceDescriptionFactory;
 use Concrete\OAuth2\Client\Provider\Concrete5ResourceOwner;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
@@ -27,16 +28,23 @@ class ClientFactory
     protected $serviceClientFactory;
 
     /**
+     * @var ServiceDescriptionFactory
+     */
+    protected $serviceDescriptionFactory;
+
+    /**
      * @var ServiceCollection
      */
     protected $serviceCollection;
 
     public function __construct(
         ServiceClientFactory $serviceClientFactory,
+        ServiceDescriptionFactory $serviceDescriptionFactory,
         ServiceCollection $serviceCollection,
         LoggerInterface $logger)
     {
         $this->serviceClientFactory = $serviceClientFactory;
+        $this->serviceDescriptionFactory = $serviceDescriptionFactory;
         $this->serviceCollection = $serviceCollection;
         $this->logger = $logger;
     }
@@ -140,7 +148,12 @@ class ClientFactory
             'auth'    => 'oauth',
         ]);
 
-        $client = new Client($httpClient, $this->serviceCollection, $this->serviceClientFactory);
+        $client = new Client(
+            $httpClient,
+            $this->serviceCollection,
+            $this->serviceClientFactory,
+            $this->serviceDescriptionFactory
+        );
         foreach((array) $provider->getServiceDescriptions() as $description) {
             $client->addServiceDescription($description);
         }

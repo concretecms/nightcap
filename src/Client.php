@@ -3,6 +3,7 @@ namespace Concrete\Api\Client;
 
 use Concrete\Api\Client\Service\Description\DescriptionInterface;
 use Concrete\Api\Client\Service\ServiceCollection;
+use Concrete\Api\Client\Service\ServiceDescriptionFactory;
 use GuzzleHttp\Command\Guzzle\Description;
 
 class Client
@@ -24,6 +25,12 @@ class Client
     protected $serviceCollection;
 
     /**
+     * @var ServiceDescriptionFactory
+     */
+    protected $serviceDescriptionFactory;
+
+
+    /**
      * @var DescriptionInterface[]
      */
     protected $descriptions = [];
@@ -31,11 +38,14 @@ class Client
     public function __construct(
         \GuzzleHttp\Client $httpClient,
         ServiceCollection $serviceCollection,
-        ServiceClientFactory $serviceClientFactory)
+        ServiceClientFactory $serviceClientFactory,
+        ServiceDescriptionFactory $serviceDescriptionFactory
+    )
     {
         $this->httpClient = $httpClient;
         $this->serviceCollection = $serviceCollection;
         $this->serviceClientFactory = $serviceClientFactory;
+        $this->serviceDescriptionFactory = $serviceDescriptionFactory;
     }
 
     public function getWebServiceClient($name)
@@ -73,12 +83,7 @@ class Client
          * @var DescriptionInterface $description
          */
         $description = $this->serviceCollection->get($namespace);
-        $descriptionData = $description->getDescription();
-
-        $baseUrl = $this->httpClient->getConfig('base_uri');
-        $descriptionData['baseUrl'] = $baseUrl;
-
-        return new Description($descriptionData);
+        return $this->serviceDescriptionFactory->createServiceDescription($this->httpClient, $description);
     }
 
     public function system()

@@ -10,9 +10,11 @@ use Concrete\Api\Client\Provider\ProviderInterface;
 use Concrete\Api\Client\Service\Description\AccountDescription;
 use Concrete\Api\Client\Service\Description\SiteDescription;
 use Concrete\Api\Client\Service\ServiceCollection;
+use Concrete\Api\Client\Service\ServiceDescriptionFactory;
 use Concrete\Api\Client\ServiceClientFactory;
 use Concrete\OAuth2\Client\Provider\Concrete5;
 use Concrete\OAuth2\Client\Provider\Concrete5ResourceOwner;
+use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use kamermans\OAuth2\Token\RawToken;
@@ -32,6 +34,7 @@ class ClientFactoryTest extends TestCase
 
         $serviceCollection = m::mock(ServiceCollection::class);
         $serviceClientFactory = m::mock(ServiceClientFactory::class);
+        $serviceDescriptionFactory = m::mock(ServiceDescriptionFactory::class);
         $serviceClient = m::mock(GuzzleClient::class);
         $logger = m::mock(LoggerInterface::class);
         $provider = m::mock(ProviderInterface::class);
@@ -39,8 +42,9 @@ class ClientFactoryTest extends TestCase
         $concrete5 = m::mock(Concrete5::class);
         $mockAccountDescription = m::mock(AccountDescription::class);
         $rawToken = m::mock(RawToken::class);
+        $serviceDescription = m::mock(Description::class);
 
-
+        $serviceDescriptionFactory->shouldReceive('createServiceDescription')->andReturn($serviceDescription);
         $serviceClientFactory->shouldReceive('createServiceClient')->andReturn($serviceClient);
         $logger->shouldReceive('notice')->withArgs(['/api/fart'])->andReturnNull();
         $logger->shouldReceive('log')->andReturnNull();
@@ -65,7 +69,7 @@ class ClientFactoryTest extends TestCase
         $provider->shouldReceive('getBaseUrl')->andReturn('http://api.test.com');
         $provider->shouldReceive('getServiceDescriptions')->andReturn($descriptions);
 
-        $factory = new ClientFactory($serviceClientFactory, $serviceCollection, $logger);
+        $factory = new ClientFactory($serviceClientFactory, $serviceDescriptionFactory, $serviceCollection, $logger);
         return [$factory, $provider, $serviceClient];
     }
 
