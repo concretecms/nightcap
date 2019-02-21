@@ -3,9 +3,9 @@
 namespace Concrete\Api\Client\Provider;
 
 use Concrete\Api\Client\OAuth2\NativeSessionAuthorizationStateStore;
-use Concrete\Api\Client\Service\AccountDescription;
-use Concrete\Api\Client\Service\SiteDescription;
-use Concrete\Api\Client\Service\SystemDescription;
+use Concrete\Api\Client\Service\Description\AccountDescription;
+use Concrete\Api\Client\Service\Description\SiteDescription;
+use Concrete\Api\Client\Service\Description\SystemDescription;
 use Concrete\OAuth2\Client\Provider\Concrete5;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 

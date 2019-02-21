@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client\Service;
+namespace Concrete\Api\Client\Service\Description;
 
 interface DescriptionInterface
 {

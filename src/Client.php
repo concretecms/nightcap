@@ -1,9 +1,9 @@
 <?php
 namespace Concrete\Api\Client;
 
-use Concrete\Api\Client\Service\DescriptionInterface;
+use Concrete\Api\Client\Service\Description\DescriptionInterface;
+use Concrete\Api\Client\Service\ServiceCollection;
 use GuzzleHttp\Command\Guzzle\Description;
-use GuzzleHttp\Command\Guzzle\GuzzleClient as WebServiceClient;
 
 class Client
 {
@@ -14,23 +14,41 @@ class Client
     protected $httpClient;
 
     /**
+     * @var ServiceClientFactory
+     */
+    protected $serviceClientFactory;
+
+    /**
+     * @var ServiceCollection
+     */
+    protected $serviceCollection;
+
+    /**
      * @var DescriptionInterface[]
      */
     protected $descriptions = [];
 
-    public function __construct(\GuzzleHttp\Client $httpClient)
+    public function __construct(
+        \GuzzleHttp\Client $httpClient,
+        ServiceCollection $serviceCollection,
+        ServiceClientFactory $serviceClientFactory)
     {
         $this->httpClient = $httpClient;
+        $this->serviceCollection = $serviceCollection;
+        $this->serviceClientFactory = $serviceClientFactory;
     }
 
     public function getWebServiceClient($name)
     {
-        return new WebServiceClient($this->httpClient, $this->getServiceDescription($name));
+        return $this->serviceClientFactory->createServiceClient(
+            $this->httpClient,
+            $this->getServiceDescription($name)
+        );
     }
 
     public function addServiceDescription(DescriptionInterface $description)
     {
-        $this->descriptions[$description->getNamespace()] = $description->getDescription();
+        $this->serviceCollection->add($description->getNamespace(), $description);
     }
 
     /**
@@ -46,15 +64,21 @@ class Client
      */
     public function getServiceDescriptions()
     {
-        return $this->descriptions;
+        return $this->serviceCollection->toArray();
     }
 
     protected function getServiceDescription($namespace)
     {
+        /**
+         * @var DescriptionInterface $description
+         */
+        $description = $this->serviceCollection->get($namespace);
+        $descriptionData = $description->getDescription();
+
         $baseUrl = $this->httpClient->getConfig('base_uri');
-        $config = $this->descriptions[$namespace];
-        $config['baseUrl'] = $baseUrl;
-        return new Description($config);
+        $descriptionData['baseUrl'] = $baseUrl;
+
+        return new Description($descriptionData);
     }
 
     public function system()

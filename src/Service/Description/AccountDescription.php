@@ -1,27 +1,27 @@
 <?php
-namespace Concrete\Api\Client\Service;
+namespace Concrete\Api\Client\Service\Description;
 
-class SiteDescription implements DescriptionInterface
+class AccountDescription implements DescriptionInterface
 {
 
     public function getNamespace()
     {
-        return 'site';
+        return 'account';
     }
 
     public function getDescription()
     {
         return [
             'operations' => [
-                'getSiteTrees' => [
-                    'uri' => '/ccm/api/v1/site/trees',
+                'getResourceOwner' => [
                     'httpMethod' => 'GET',
-                    'responseModel' => 'SiteTreeList',
+                    'uri' => '/ccm/api/v1/account/info',
+                    'responseModel' => 'accountResponse',
                     'parameters' => []
-                ],
+                ]
             ],
             'models' => [
-                'SiteTreeList' => [
+                'accountResponse' => [
                     'type' => 'object',
                     'additionalProperties' => [
                         'location' => 'json'
