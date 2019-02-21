@@ -9,7 +9,7 @@ class Client
 {
 
     /**
-     * @var Oauth2Client
+     * @var \GuzzleHttp\Client
      */
     protected $httpClient;
 
@@ -31,6 +31,14 @@ class Client
     public function addServiceDescription(DescriptionInterface $description)
     {
         $this->services[$description->getNamespace()] = $description->getDescription();
+    }
+
+    /**
+     * @return \GuzzleHttp\Client
+     */
+    public function getHttpClient(): \GuzzleHttp\Client
+    {
+        return $this->httpClient;
     }
 
     protected function getServiceDescription($namespace)
