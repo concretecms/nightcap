@@ -54,6 +54,6 @@ interface ProviderInterface
     /**
      * @return AuthorizationStateStoreInterface
      */
-    public function getAuthenticationStateStore();
+    public function getAuthorizationStateStore();
 
 }

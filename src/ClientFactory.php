@@ -3,20 +3,14 @@ namespace Concrete\Api\Client;
 
 use Concrete\Api\Client\OAuth2\Exception\InvalidStateException;
 use Concrete\Api\Client\Provider\ProviderInterface;
-use Concrete\Api\Client\Service\SiteDescription;
-use Concrete\Api\Client\Service\SystemDescription;
-use Concrete\OAuth2\Client\Provider\Concrete5;
 use Concrete\OAuth2\Client\Provider\Concrete5ResourceOwner;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
 use kamermans\OAuth2\GrantType\AuthorizationCode;
-use kamermans\OAuth2\GrantType\NullGrantType;
 use kamermans\OAuth2\GrantType\RefreshToken;
 use kamermans\OAuth2\OAuth2Middleware;
-use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ClientFactory
 {
@@ -39,12 +33,11 @@ class ClientFactory
 
     private function addLoggingHandler(HandlerStack $stack, array $messageFormats)
     {
-        collect($messageFormats)->each(function ($messageFormat) use ($stack) {
+        foreach($messageFormats as $messageFormat) {
             $stack->unshift(
                 $this->createLoggingMiddleware($messageFormat)
             );
-        });
-
+        }
         return $stack;
     }
 
@@ -66,7 +59,7 @@ class ClientFactory
         $config = array_merge($provider->getClientConfig(), $config);
         $oauthProvider = $provider->createAuthenticationProvider();
         $authorizeUrl = $oauthProvider->getAuthorizationUrl($config);
-        $provider->getAuthenticationStateStore()->set($oauthProvider->getState());
+        $provider->getAuthorizationStateStore()->set($oauthProvider->getState());
         $provider->getTokenStore()->deleteToken();
         return new RedirectResponse($authorizeUrl);
     }
@@ -80,9 +73,9 @@ class ClientFactory
      */
     public function authorizeClient(ProviderInterface $provider, $authCode, $state)
     {
-        if (!$state || $state != $provider->getAuthenticationStateStore()->get()) {
+        if (!$state || $state != $provider->getAuthorizationStateStore()->get()) {
             throw new InvalidStateException(
-                t('OAuth2 state parameter empty or did not match what was retrieved from the state store.')
+                'OAuth2 state parameter empty or did not match what was retrieved from the state store.'
             );
         }
 

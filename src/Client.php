@@ -23,14 +23,14 @@ class Client
         $this->httpClient = $httpClient;
     }
 
-    protected function getWebServiceClient($name)
+    public function getWebServiceClient($name)
     {
         return new WebServiceClient($this->httpClient, $this->getServiceDescription($name));
     }
 
     public function addServiceDescription(DescriptionInterface $description)
     {
-        $this->services[$description->getNamespace()] = $description->getDescription();
+        $this->descriptions[$description->getNamespace()] = $description->getDescription();
     }
 
     /**
@@ -41,10 +41,18 @@ class Client
         return $this->httpClient;
     }
 
+    /**
+     * @return DescriptionInterface[]
+     */
+    public function getServiceDescriptions()
+    {
+        return $this->descriptions;
+    }
+
     protected function getServiceDescription($namespace)
     {
         $baseUrl = $this->httpClient->getConfig('base_uri');
-        $config = $this->services[$namespace];
+        $config = $this->descriptions[$namespace];
         $config['baseUrl'] = $baseUrl;
         return new Description($config);
     }
@@ -57,6 +65,11 @@ class Client
     public function site()
     {
         return $this->getWebServiceClient('site');
+    }
+
+    public function account()
+    {
+        return $this->getWebServiceClient('account');
     }
 
     public function __call($name, $arguments)

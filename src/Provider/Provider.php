@@ -142,7 +142,7 @@ class Provider implements ProviderInterface
         return $this->tokenStore;
     }
 
-    public function getAuthenticationStateStore()
+    public function getAuthorizationStateStore()
     {
         return new NativeSessionAuthorizationStateStore();
     }
