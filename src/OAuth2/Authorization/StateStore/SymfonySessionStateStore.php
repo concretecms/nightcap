@@ -1,9 +1,9 @@
 <?php
-namespace Concrete\Api\Client\OAuth2;
+namespace Concrete\Api\Client\OAuth2\Authorization\StateStore;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class SymfonySessionAuthorizationStateStore implements AuthorizationStateStoreInterface
+class SymfonySessionStateStore implements StateStoreInterface
 {
 
     /**

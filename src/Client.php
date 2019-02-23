@@ -58,7 +58,7 @@ class Client
 
     public function addServiceDescription(DescriptionInterface $description)
     {
-        $this->serviceCollection->add($description->getNamespace(), $description);
+        $this->serviceCollection->add($description);
     }
 
     /**

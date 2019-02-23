@@ -18,6 +18,24 @@ class ClientTest extends TestCase
 
     use m\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
+    public function testPassServiceDescriptionInCollection()
+    {
+        $serviceClientFactory = m::mock(ServiceClientFactory::class);
+        $serviceDescriptionFactory = m::mock(ServiceDescriptionFactory::class);
+        $serviceCollection = m::mock(ServiceCollection::class);
+
+        $httpClient = m::mock('\GuzzleHttp\Client');
+        $service = m::mock(SystemDescription::class);
+        $service->shouldReceive('getNamespace')->andReturn('system');
+        $service->shouldReceive('getDescription');
+        $serviceCollection->shouldReceive('toArray')->andReturn([$service]);
+
+        $client = new Client($httpClient, $serviceCollection, $serviceClientFactory, $serviceDescriptionFactory);
+        $descriptions = $client->getServiceDescriptions();
+        $this->assertCount(1, $descriptions);
+        $this->assertEquals('system', $descriptions[0]->getNamespace());
+    }
+
     public function testAddServiceDescription()
     {
         $systemDescription = new SystemDescription();
@@ -30,7 +48,7 @@ class ClientTest extends TestCase
         $service = m::mock(SystemDescription::class);
         $service->shouldReceive('getNamespace')->andReturn('system');
         $service->shouldReceive('getDescription')->andReturn($systemDescriptionDescription);
-        $serviceCollection->shouldReceive('add')->withArgs(['system', $service]);
+        $serviceCollection->shouldReceive('add')->withArgs([$service]);
         $serviceCollection->shouldReceive('toArray')->andReturn([$service]);
 
         $client = new Client($httpClient, $serviceCollection, $serviceClientFactory, $serviceDescriptionFactory);
@@ -76,11 +94,5 @@ class ClientTest extends TestCase
         $client = new Client($httpClient, $serviceCollection, $serviceClientFactory, $serviceDescriptionFactory);
         $serviceClient = $client->foo();
     }
-    /*
-    public function testGetSystemInformationMethod()
-    {
-        $client = m::mock(Client::class);
-        $client->system()->getSystemInformation());
-    }
-    */
+
 }

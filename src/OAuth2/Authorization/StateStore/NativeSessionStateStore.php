@@ -1,7 +1,7 @@
 <?php
-namespace Concrete\Api\Client\OAuth2;
+namespace Concrete\Api\Client\OAuth2\Authorization\StateStore;
 
-class NativeSessionAuthorizationStateStore implements AuthorizationStateStoreInterface
+class NativeSessionStateStore implements StateStoreInterface
 {
 
     public function set($state)
