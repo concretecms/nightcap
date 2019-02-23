@@ -14,6 +14,7 @@ class PasswordCredentialsGrantType implements GrantTypeInterface
     {
         return [
             'client_id' => $configuration->getClientId(),
+            'client_secret' => $configuration->getClientSecret(),
             'username' => $configuration->getUsername(),
             'password' => $configuration->getPassword(),
             'scope' => implode(' ', $configuration->getScopes()),
