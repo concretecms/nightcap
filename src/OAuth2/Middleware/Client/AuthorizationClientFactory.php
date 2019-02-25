@@ -1,8 +1,8 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Middleware\Client;
+namespace Concrete\Nightcap\OAuth2\Middleware\Client;
 
 
-use Concrete\Api\Client\OAuth2\Configuration\ConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\ConfigurationInterface;
 use GuzzleHttp\Client;
 use League\OAuth2\Client\Provider\AbstractProvider;
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace Concrete\Api\Client\Test;
+namespace Concrete\Nightcap\Test;
 
-use Concrete\Api\Client\Client;
-use Concrete\Api\Client\ClientFactory;
-use Concrete\Api\Client\OAuth2\Authorization\ClientAuthorizer;
-use Concrete\Api\Client\OAuth2\Authorization\Redirect\RedirectorInterface;
-use Concrete\Api\Client\OAuth2\Authorization\StateStore\StateStoreInterface;
-use Concrete\Api\Client\OAuth2\Configuration\AuthorizationCodeConfiguration;
-use Concrete\Api\Client\OAuth2\Middleware\MiddlewareFactory;
-use Concrete\Api\Client\Service\Description\SystemDescription;
-use Concrete\Api\Client\Service\ServiceCollection;
-use Concrete\Api\Client\Service\ServiceDescriptionFactory;
-use Concrete\Api\Client\ServiceClientFactory;
+use Concrete\Nightcap\Client;
+use Concrete\Nightcap\ClientFactory;
+use Concrete\Nightcap\OAuth2\Authorization\ClientAuthorizer;
+use Concrete\Nightcap\OAuth2\Authorization\Redirect\RedirectorInterface;
+use Concrete\Nightcap\OAuth2\Authorization\StateStore\StateStoreInterface;
+use Concrete\Nightcap\OAuth2\Configuration\AuthorizationCodeConfiguration;
+use Concrete\Nightcap\OAuth2\Middleware\MiddlewareFactory;
+use Concrete\Nightcap\Service\Description\SystemDescription;
+use Concrete\Nightcap\Service\ServiceCollection;
+use Concrete\Nightcap\Service\ServiceDescriptionFactory;
+use Concrete\Nightcap\ServiceClientFactory;
 use Concrete\OAuth2\Client\Provider\Concrete5;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
@@ -28,7 +28,7 @@ class ClientAuthorizerTest extends TestCase
     use m\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
     /**
-     * @expectedException \Concrete\Api\Client\OAuth2\Exception\InvalidStateException
+     * @expectedException \Concrete\Nightcap\OAuth2\Exception\InvalidStateException
      */
     public function testAuthorizeClientFailure()
     {

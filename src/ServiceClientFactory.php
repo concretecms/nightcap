@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client;
+namespace Concrete\Nightcap;
 
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient as WebServiceClient;

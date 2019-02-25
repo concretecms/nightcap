@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Authorization\StateStore;
+namespace Concrete\Nightcap\OAuth2\Authorization\StateStore;
 
 /**
  * Stores and retrieve OAuth2 state from our provider.

@@ -1,10 +1,10 @@
 <?php
-namespace Concrete\Api\Client\Service;
+namespace Concrete\Nightcap\Service;
 
-use Concrete\Api\Client\Service\Description\DescriptionInterface;
+use Concrete\Nightcap\Service\Description\DescriptionInterface;
 
 /**
- * Holds objects of the Concrete\Api\Client\Service\Description\DescriptionInterface variety for use with the
+ * Holds objects of the Concrete\Nightcap\Service\Description\DescriptionInterface variety for use with the
  * API client.
  * Class ServiceCollection
  * @package PortlandLabs\LibertaServer\Api\Client\Service

@@ -1,8 +1,8 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Middleware\GrantType;
+namespace Concrete\Nightcap\OAuth2\Middleware\GrantType;
 
-use Concrete\Api\Client\OAuth2\Configuration\ConfigurationInterface;
-use Concrete\Api\Client\OAuth2\Configuration\PasswordCredentialsConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\ConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\PasswordCredentialsConfigurationInterface;
 use GuzzleHttp\Client;
 use kamermans\OAuth2\GrantType\ClientCredentials;
 use kamermans\OAuth2\GrantType\PasswordCredentials;

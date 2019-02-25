@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client;
+namespace Concrete\Nightcap;
 
 interface ClientFactoryInterface
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Authorization\Redirect;
+namespace Concrete\Nightcap\OAuth2\Authorization\Redirect;
 
 class NativeRedirector implements RedirectorInterface
 {

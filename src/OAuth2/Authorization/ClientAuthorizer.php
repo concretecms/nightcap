@@ -1,12 +1,12 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Authorization;
+namespace Concrete\Nightcap\OAuth2\Authorization;
 
-use Concrete\Api\Client\ClientFactory;
-use Concrete\Api\Client\OAuth2\Authorization\Redirect\RedirectorInterface;
-use Concrete\Api\Client\OAuth2\Authorization\StateStore\StateStoreInterface;
-use Concrete\Api\Client\OAuth2\Configuration\AuthorizationCodeConfiguration;
-use Concrete\Api\Client\OAuth2\Exception\InvalidGrantTypeException;
-use Concrete\Api\Client\OAuth2\Exception\InvalidStateException;
+use Concrete\Nightcap\ClientFactory;
+use Concrete\Nightcap\OAuth2\Authorization\Redirect\RedirectorInterface;
+use Concrete\Nightcap\OAuth2\Authorization\StateStore\StateStoreInterface;
+use Concrete\Nightcap\OAuth2\Configuration\AuthorizationCodeConfiguration;
+use Concrete\Nightcap\OAuth2\Exception\InvalidGrantTypeException;
+use Concrete\Nightcap\OAuth2\Exception\InvalidStateException;
 use Concrete\OAuth2\Client\Provider\Concrete5ResourceOwner;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use League\OAuth2\Client\Provider\AbstractProvider;

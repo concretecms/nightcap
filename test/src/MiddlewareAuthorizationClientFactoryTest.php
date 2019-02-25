@@ -1,14 +1,14 @@
 <?php
 
-namespace Concrete\Api\Client\Test;
+namespace Concrete\Nightcap\Test;
 
 use Concrete\OAuth2\Client\Provider\Concrete5;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Uri;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Concrete\Api\Client\OAuth2\Middleware\Client\AuthorizationClientFactory;
-use Concrete\Api\Client\OAuth2\Configuration\ConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Middleware\Client\AuthorizationClientFactory;
+use Concrete\Nightcap\OAuth2\Configuration\ConfigurationInterface;
 
 class MiddlewareAuthorizationClientFactoryTest extends TestCase
 {

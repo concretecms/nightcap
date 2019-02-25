@@ -1,14 +1,14 @@
 <?php
 
-namespace Concrete\Api\Client\Test;
+namespace Concrete\Nightcap\Test;
 
-use Concrete\Api\Client\OAuth2\Configuration\AuthorizationCodeConfiguration;
-use Concrete\Api\Client\OAuth2\Configuration\ClientCredentialsConfiguration;
-use Concrete\Api\Client\OAuth2\Configuration\PasswordCredentialsConfiguration;
-use Concrete\Api\Client\OAuth2\Middleware\GrantType\AuthorizationCodeGrantType;
-use Concrete\Api\Client\OAuth2\Middleware\GrantType\ClientCredentialsGrantType;
-use Concrete\Api\Client\OAuth2\Middleware\GrantType\PasswordCredentialsGrantType;
-use Concrete\Api\Client\OAuth2\Middleware\MiddlewareFactory;
+use Concrete\Nightcap\OAuth2\Configuration\AuthorizationCodeConfiguration;
+use Concrete\Nightcap\OAuth2\Configuration\ClientCredentialsConfiguration;
+use Concrete\Nightcap\OAuth2\Configuration\PasswordCredentialsConfiguration;
+use Concrete\Nightcap\OAuth2\Middleware\GrantType\AuthorizationCodeGrantType;
+use Concrete\Nightcap\OAuth2\Middleware\GrantType\ClientCredentialsGrantType;
+use Concrete\Nightcap\OAuth2\Middleware\GrantType\PasswordCredentialsGrantType;
+use Concrete\Nightcap\OAuth2\Middleware\MiddlewareFactory;
 use GuzzleHttp\Client;
 use kamermans\OAuth2\GrantType\AuthorizationCode;
 use kamermans\OAuth2\GrantType\ClientCredentials;

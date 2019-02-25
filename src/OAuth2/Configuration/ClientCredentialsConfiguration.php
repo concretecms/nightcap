@@ -1,10 +1,10 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Configuration;
+namespace Concrete\Nightcap\OAuth2\Configuration;
 
-use Concrete\Api\Client\OAuth2\Configuration\Traits\ClientIdTrait;
-use Concrete\Api\Client\OAuth2\Configuration\Traits\ScopesTrait;
-use Concrete\Api\Client\OAuth2\Configuration\Traits\TokenEndpointTrait;
-use Concrete\Api\Client\OAuth2\Configuration\Traits\BaseUrlTrait;
+use Concrete\Nightcap\OAuth2\Configuration\Traits\ClientIdTrait;
+use Concrete\Nightcap\OAuth2\Configuration\Traits\ScopesTrait;
+use Concrete\Nightcap\OAuth2\Configuration\Traits\TokenEndpointTrait;
+use Concrete\Nightcap\OAuth2\Configuration\Traits\BaseUrlTrait;
 
 class ClientCredentialsConfiguration implements ClientCredentialsConfigurationInterface
 {

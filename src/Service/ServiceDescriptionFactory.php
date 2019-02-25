@@ -1,7 +1,7 @@
 <?php
-namespace Concrete\Api\Client\Service;
+namespace Concrete\Nightcap\Service;
 
-use Concrete\Api\Client\Service\Description\DescriptionInterface;
+use Concrete\Nightcap\Service\Description\DescriptionInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Guzzle\Description;
 

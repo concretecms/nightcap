@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Exception;
+namespace Concrete\Nightcap\OAuth2\Exception;
 
 /**
  * Thrown if we're attempting to use the authorization flow with a grant type other than the Authorization Code

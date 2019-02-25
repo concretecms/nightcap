@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Configuration;
+namespace Concrete\Nightcap\OAuth2\Configuration;
 
 interface ConfigurationInterface
 {

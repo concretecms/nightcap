@@ -1,6 +1,6 @@
 {
-  "name": "concrete5/concrete5-api-client",
-  "description": "A PHP client for the concrete5 REST API.",
+  "name": "concrete5/nightcap",
+  "description": "Easily build PHP client libraries for your REST APIs.",
   "minimum-stability": "dev",
   "authors": [
     {
@@ -23,12 +23,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Concrete\\Api\\Client\\": "src/"
+      "Concrete\\Nightcap\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Concrete\\Api\\Client\\Test\\": "tests/src/"
+      "Concrete\\Nightcap\\Test\\": "tests/src/"
     }
   }
 }

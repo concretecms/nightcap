@@ -1,10 +1,10 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Helper\ProviderBridge;
+namespace Concrete\Nightcap\OAuth2\Helper\ProviderBridge;
 
-use Concrete\Api\Client\OAuth2\Configuration\AuthorizationCodeConfigurationInterface;
-use Concrete\Api\Client\OAuth2\Configuration\ClientCredentialsConfigurationInterface;
-use Concrete\Api\Client\OAuth2\Configuration\ConfigurationInterface;
-use Concrete\Api\Client\OAuth2\Configuration\PasswordCredentialsConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\AuthorizationCodeConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\ClientCredentialsConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\ConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\PasswordCredentialsConfigurationInterface;
 
 /**
  * Converts the Configuration object into a other OAuth2 Providers

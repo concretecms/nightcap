@@ -1,5 +1,5 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Authorization\Redirect;
+namespace Concrete\Nightcap\OAuth2\Authorization\Redirect;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 class SymfonyRedirector implements RedirectorInterface

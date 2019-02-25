@@ -1,19 +1,19 @@
 <?php
 
-namespace Concrete\Api\Client\Test;
+namespace Concrete\Nightcap\Test;
 
-use Concrete\Api\Client\Client;
-use Concrete\Api\Client\ClientFactory;
-use Concrete\Api\Client\OAuth2\AuthorizationStateStoreInterface;
-use Concrete\Api\Client\OAuth2\Configuration\ConfigurationInterface;
-use Concrete\Api\Client\OAuth2\Exception\InvalidStateException;
-use Concrete\Api\Client\OAuth2\Middleware\MiddlewareFactory;
-use Concrete\Api\Client\Provider\ProviderInterface;
-use Concrete\Api\Client\Service\Description\AccountDescription;
-use Concrete\Api\Client\Service\Description\SiteDescription;
-use Concrete\Api\Client\Service\ServiceCollection;
-use Concrete\Api\Client\Service\ServiceDescriptionFactory;
-use Concrete\Api\Client\ServiceClientFactory;
+use Concrete\Nightcap\Client;
+use Concrete\Nightcap\ClientFactory;
+use Concrete\Nightcap\OAuth2\AuthorizationStateStoreInterface;
+use Concrete\Nightcap\OAuth2\Configuration\ConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Exception\InvalidStateException;
+use Concrete\Nightcap\OAuth2\Middleware\MiddlewareFactory;
+use Concrete\Nightcap\Provider\ProviderInterface;
+use Concrete\Nightcap\Service\Description\AccountDescription;
+use Concrete\Nightcap\Service\Description\SiteDescription;
+use Concrete\Nightcap\Service\ServiceCollection;
+use Concrete\Nightcap\Service\ServiceDescriptionFactory;
+use Concrete\Nightcap\ServiceClientFactory;
 use Concrete\OAuth2\Client\Provider\Concrete5;
 use Concrete\OAuth2\Client\Provider\Concrete5ResourceOwner;
 use GuzzleHttp\Command\Guzzle\Description;

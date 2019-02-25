@@ -1,7 +1,7 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Middleware\GrantType;
+namespace Concrete\Nightcap\OAuth2\Middleware\GrantType;
 
-use Concrete\Api\Client\OAuth2\Configuration\ConfigurationInterface;
+use Concrete\Nightcap\OAuth2\Configuration\ConfigurationInterface;
 use GuzzleHttp\Client;
 use kamermans\OAuth2\GrantType\AuthorizationCode;
 use kamermans\OAuth2\GrantType\RefreshToken;

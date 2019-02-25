@@ -1,10 +1,10 @@
 <?php
-namespace Concrete\Api\Client;
+namespace Concrete\Nightcap;
 
-use Concrete\Api\Client\OAuth2\Middleware\MiddlewareFactory;
-use Concrete\Api\Client\Provider\ProviderInterface;
-use Concrete\Api\Client\Service\ServiceCollection;
-use Concrete\Api\Client\Service\ServiceDescriptionFactory;
+use Concrete\Nightcap\OAuth2\Middleware\MiddlewareFactory;
+use Concrete\Nightcap\Provider\ProviderInterface;
+use Concrete\Nightcap\Service\ServiceCollection;
+use Concrete\Nightcap\Service\ServiceDescriptionFactory;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;

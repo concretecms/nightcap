@@ -1,7 +1,7 @@
 <?php
-namespace Concrete\Api\Client\OAuth2\Configuration;
+namespace Concrete\Nightcap\OAuth2\Configuration;
 
-use Concrete\Api\Client\OAuth2\Configuration\Traits\TokenEndpointTrait;
+use Concrete\Nightcap\OAuth2\Configuration\Traits\TokenEndpointTrait;
 
 class AuthorizationCodeConfiguration extends ClientCredentialsConfiguration implements AuthorizationCodeConfigurationInterface
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Concrete\Api\Client\Test;
+namespace Concrete\Nightcap\Test;
 
-use Concrete\Api\Client\Client;
-use Concrete\Api\Client\Service\Description\SystemDescription;
-use Concrete\Api\Client\Service\ServiceCollection;
-use Concrete\Api\Client\Service\ServiceDescriptionFactory;
-use Concrete\Api\Client\ServiceClientFactory;
+use Concrete\Nightcap\Client;
+use Concrete\Nightcap\Service\Description\SystemDescription;
+use Concrete\Nightcap\Service\ServiceCollection;
+use Concrete\Nightcap\Service\ServiceDescriptionFactory;
+use Concrete\Nightcap\ServiceClientFactory;
 use Concrete\OAuth2\Client\Provider\Concrete5;
 use GuzzleHttp\Command\Guzzle\Description;
 use Mockery as m;
