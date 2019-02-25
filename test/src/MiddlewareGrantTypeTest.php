@@ -8,12 +8,10 @@ use Concrete\Nightcap\OAuth2\Configuration\PasswordCredentialsConfiguration;
 use Concrete\Nightcap\OAuth2\Middleware\GrantType\AuthorizationCodeGrantType;
 use Concrete\Nightcap\OAuth2\Middleware\GrantType\ClientCredentialsGrantType;
 use Concrete\Nightcap\OAuth2\Middleware\GrantType\PasswordCredentialsGrantType;
-use Concrete\Nightcap\OAuth2\Middleware\MiddlewareFactory;
 use GuzzleHttp\Client;
 use kamermans\OAuth2\GrantType\AuthorizationCode;
 use kamermans\OAuth2\GrantType\ClientCredentials;
 use kamermans\OAuth2\GrantType\PasswordCredentials;
-use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
@@ -43,6 +41,7 @@ class MiddlewareGrantTypeTest extends TestCase
         $configuration->shouldReceive('getClientId');
         $configuration->shouldReceive('getUsername');
         $configuration->shouldReceive('getPassword');
+        $configuration->shouldReceive('getClientSecret');
         $configuration->shouldReceive('getScopes')->andReturn([]);
         $factory = new PasswordCredentialsGrantType();
         $baseGrant = $factory->createMiddlewareGrantType($client, $configuration);

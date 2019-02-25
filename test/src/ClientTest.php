@@ -3,16 +3,45 @@
 namespace Concrete\Nightcap\Test;
 
 use Concrete\Nightcap\Client;
+use Concrete\Nightcap\Service\Description\DescriptionInterface;
 use Concrete\Nightcap\Service\Description\SystemDescription;
 use Concrete\Nightcap\Service\ServiceCollection;
 use Concrete\Nightcap\Service\ServiceDescriptionFactory;
 use Concrete\Nightcap\ServiceClientFactory;
-use Concrete\OAuth2\Client\Provider\Concrete5;
 use GuzzleHttp\Command\Guzzle\Description;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
+class TestDescription implements DescriptionInterface
+{
+    public function getNamespace()
+    {
+        return 'test';
+    }
+
+    public function getDescription()
+    {
+        return [
+            'operations' => [
+                'getFoo' => [
+                    'httpMethod' => 'GET',
+                    'uri' => '/ccm/api/v1/foo',
+                    'responseModel' => 'fooResponse',
+                    'parameters' => []
+                ]
+            ],
+            'models' => [
+                'fooResponse' => [
+                    'type' => 'object',
+                    'additionalProperties' => [
+                        'location' => 'json'
+                    ]
+                ]
+            ]
+        ];
+    }
+
+}
 class ClientTest extends TestCase
 {
 
@@ -25,29 +54,29 @@ class ClientTest extends TestCase
         $serviceCollection = m::mock(ServiceCollection::class);
 
         $httpClient = m::mock('\GuzzleHttp\Client');
-        $service = m::mock(SystemDescription::class);
-        $service->shouldReceive('getNamespace')->andReturn('system');
+        $service = m::mock(TestDescription::class);
+        $service->shouldReceive('getNamespace')->andReturn('test');
         $service->shouldReceive('getDescription');
         $serviceCollection->shouldReceive('toArray')->andReturn([$service]);
 
         $client = new Client($httpClient, $serviceCollection, $serviceClientFactory, $serviceDescriptionFactory);
         $descriptions = $client->getServiceDescriptions();
         $this->assertCount(1, $descriptions);
-        $this->assertEquals('system', $descriptions[0]->getNamespace());
+        $this->assertEquals('test', $descriptions[0]->getNamespace());
     }
 
     public function testAddServiceDescription()
     {
-        $systemDescription = new SystemDescription();
-        $systemDescriptionDescription = $systemDescription->getDescription();
+        $testDescription = new TestDescription();
+        $testDescriptionDescription = $testDescription->getDescription();
         $serviceClientFactory = m::mock(ServiceClientFactory::class);
         $serviceDescriptionFactory = m::mock(ServiceDescriptionFactory::class);
         $serviceCollection = m::mock(ServiceCollection::class);
 
         $httpClient = m::mock('\GuzzleHttp\Client');
-        $service = m::mock(SystemDescription::class);
-        $service->shouldReceive('getNamespace')->andReturn('system');
-        $service->shouldReceive('getDescription')->andReturn($systemDescriptionDescription);
+        $service = m::mock(TestDescription::class);
+        $service->shouldReceive('getNamespace')->andReturn('test');
+        $service->shouldReceive('getDescription')->andReturn($testDescriptionDescription);
         $serviceCollection->shouldReceive('add')->withArgs([$service]);
         $serviceCollection->shouldReceive('toArray')->andReturn([$service]);
 
@@ -62,7 +91,7 @@ class ClientTest extends TestCase
     {
         $mockServiceDescription = m::mock(Description::class);
         $serviceDescriptionFactory = m::mock(ServiceDescriptionFactory::class);
-        $fooServiceDescription = m::mock(SystemDescription::class);
+        $fooServiceDescription = m::mock(TestDescription::class);
         $fooServiceDescriptionDescription = [
             'operations' => [
                 'getFoo' => [
