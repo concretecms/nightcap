@@ -5,10 +5,10 @@ concrete5 Nightcap is a library that aims to make getting REST just a little bit
 concrete5 Nightcap is **not**:
 
 1. A REST Library – Nightcap uses [Guzzle 6 for that](http://docs.guzzlephp.org/en/stable/)
-2. A REST Web Services library – Nightcap uses [Guzzle Services for that](https://github.com/guzzle/guzzle-services).
-3. An OAuth2 Provider – Nightcap uses the [League OAuth2 Client for that](https://github.com/thephpleague/oauth2-client).
+3. A REST Web Services library – Nightcap uses [Guzzle Services for that](https://github.com/guzzle/guzzle-services).
+4. An OAuth2 Provider – Nightcap uses the [League OAuth2 Client for that](https://github.com/thephpleague/oauth2-client).
 
-Instead, Nightcap is a way to glue all these different things together, providing a nice object-oriented layer around various OAuth2 grant types and authorization. Additionally, Nightcap gives you a way to define your web services easily, and offer extension as well. 
+Instead, Nightcap is a way to glue all these different things together, providing a nice object-oriented layer around various OAuth2 grant types and authorization. It uses the very handy [Guzzle OAuth2 Subscriber](https://github.com/kamermans/guzzle-oauth2-subscriber) library to handle refresh tokens and access token persistence transparently, without any configuration. Additionally, Nightcap gives you a way to define your web services easily, and offer extension as well. 
 
 ## Library Example
 
