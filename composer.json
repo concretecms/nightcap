@@ -14,6 +14,7 @@
     "kamermans/guzzle-oauth2-subscriber": "^1.0",
     "guzzlehttp/guzzle-services": "^1.1",
     "guzzlehttp/guzzle": "^6.0",
+    "rtheunissen/guzzle-log-middleware": "dev-master",
     "psr/log": "^1.1@dev"
   },
   "require-dev": {
