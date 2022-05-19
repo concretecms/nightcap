@@ -1,5 +1,5 @@
 {
-  "name": "concrete5/nightcap",
+  "name": "concretecms/nightcap",
   "description": "Easily build PHP client libraries for your REST APIs.",
   "minimum-stability": "dev",
   "authors": [
